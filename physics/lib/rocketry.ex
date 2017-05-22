@@ -11,7 +11,7 @@ defmodule Physics.Rocketry do
       |> Converter.to_nearest_tenth
   end
 
-  defp calculate_escape({mass: mass, radius: radius}) do
+  defp calculate_escape(%{mass: mass, radius: radius}) do
     newtons_constant = 6.67e-11
     2 * newtons_constant * mass / radius
       |> :math.sqrt
@@ -35,5 +35,7 @@ defmodule Converter do
     (meters * 3.335638620368e-9) |> round_up
   end
 
-  def round_up(val) when is_float(val), do: trunc(val) end
+  def round_up(val) when is_float(val) do
+    trunc(val)
+  end
 end
